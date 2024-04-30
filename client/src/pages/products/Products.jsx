@@ -5,6 +5,7 @@ import LayoutApp from "../../components/Layout";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Modal, Select, Table, message } from "antd";
 import FormItem from "antd/lib/form/FormItem";
+import { BASE_URL } from "../../components/constant";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Products = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/products/getproducts");
+      const { data } = await axios.get(`${BASE_URL}/api/products/getproducts`);
       setProductData(data);
       dispatch({
         type: "HIDE_LOADING",
@@ -40,7 +41,7 @@ const Products = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      await axios.post("/api/products/deleteproducts", {
+      await axios.post(`${BASE_URL}/api/products/deleteproducts`, {
         productId: record._id,
       });
       message.success("Product Deleted Successfully!");
@@ -102,7 +103,7 @@ const Products = () => {
         dispatch({
           type: "SHOW_LOADING",
         });
-        const res = await axios.post("/api/products/addproducts", value);
+        const res = await axios.post(`${BASE_URL}/api/products/addproducts`, value);
         message.success("Product Added Successfully!");
         getAllProducts();
         setPopModal(false);

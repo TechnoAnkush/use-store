@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../components/constant";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Register = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      await axios.post("/api/users/register", value);
+      await axios.post(`${BASE_URL}/api/users/register`, value);
       message.success("Register Successfully!");
       navigate("/login");
       dispatch({

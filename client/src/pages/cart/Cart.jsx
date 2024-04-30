@@ -10,6 +10,7 @@ import { Button, Form, Input, message, Modal, Select, Table } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../components/constant";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
@@ -115,7 +116,7 @@ const Cart = () => {
         ),
         userId: JSON.parse(localStorage.getItem("auth"))._id,
       };
-      await axios.post("/api/bills/addbills", newObject);
+      await axios.post(`${BASE_URL}/api/bills/addbills`, newObject);
       message.success("Bill Generated!");
       navigate("/bills");
     } catch (error) {

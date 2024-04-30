@@ -6,6 +6,7 @@ import { useReactToPrint } from "react-to-print";
 import { EyeOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import Layout from "../../components/Layout";
+import { BASE_URL } from "../../components/constant";
 
 const Bills = () => {
   const componentRef = useRef();
@@ -19,7 +20,7 @@ const Bills = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      let { data } = await axios.get("/api/bills/getbills");
+      let { data } = await axios.get(`${BASE_URL}/api/bills/getbills`);
       console.log("data", data);
       setBillsData(data);
       dispatch({

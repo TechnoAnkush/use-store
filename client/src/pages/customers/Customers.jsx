@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import Layout from '../../components/Layout'
+import { BASE_URL } from '../../components/constant';
 
 const Customers = () => {
 
@@ -14,7 +15,7 @@ const Customers = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const {data} = await axios.get('/api/bills/getbills');
+      const {data} = await axios.get(`${BASE_URL}/api/bills/getbills`);
       setBillsData(data);
       dispatch({
         type: "HIDE_LOADING",

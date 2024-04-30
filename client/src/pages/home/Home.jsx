@@ -4,6 +4,7 @@ import LayoutApp from '../../components/Layout'
 import { Row, Col } from 'antd';
 import Product from '../../components/Product';
 import { useDispatch } from 'react-redux';
+import { BASE_URL } from '../../components/constant';
 
 const Home = () => {
 
@@ -33,7 +34,7 @@ const Home = () => {
           dispatch({
             type: "SHOW_LOADING",
           });
-          const {data} = await axios.get('/api/products/getproducts');
+          const {data} = await axios.get(`${BASE_URL}/api/products/getproducts`);
           setProductData(data);
           dispatch({
             type: "HIDE_LOADING",
